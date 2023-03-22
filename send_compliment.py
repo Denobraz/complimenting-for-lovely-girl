@@ -23,7 +23,7 @@ async def generate_compliment(name: str) -> str:
     response = openai.Completion.create(
         engine="text-davinci-002",
         prompt=prompt,
-        max_tokens=60,
+        max_tokens=90,
         n=1,
         stop=None,
         temperature=0.7,
@@ -57,10 +57,10 @@ def job():
     loop.run_until_complete(send_compliment())
 
 # Запланировать отправку комплимента каждый день в определенное время (например, 12:00)
-#schedule.every().day.at("12:00").do(job)
-
-#while True:
-#   schedule.run_pending()
-#   time.sleep(1)
+schedule.every(3).hours.do(job)
 
 job()
+
+while True:
+   schedule.run_pending()
+   time.sleep(1)
