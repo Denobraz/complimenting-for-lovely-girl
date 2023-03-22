@@ -18,12 +18,12 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 girl_name = os.getenv("GIRL_NAME")
 
 async def generate_compliment(name: str) -> str:
-    prompt = f"Создайте небольшой комплимент для девушки по имени {name}."
+    prompt = f"Создай небольшой комплимент для девушки по имени {name}."
 
     response = openai.Completion.create(
-        engine="text-davinci-002",
+        engine="text-davinci-003",
         prompt=prompt,
-        max_tokens=90,
+        max_tokens=128,
         n=1,
         stop=None,
         temperature=0.7,
